@@ -3,16 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CommonModule } from '@angular/common';
-// import { ProductComponent } from './product.component';
+import { ProductComponent } from './product.component';
 
 const routes: Routes = [
-  // { 
-    // path: 'products', component: ProductComponent,
-    // children: [
+  { 
+    path: 'products', component: ProductComponent,
+    children: [
       { path: '', component: ProductListComponent },
-      { path: 'detail', component: ProductDetailComponent },
-    // ]
-  // },
+      { path: 'detail', component: ProductDetailComponent }
+    ]
+  },
 ];
 
 
@@ -20,7 +20,7 @@ const routes: Routes = [
   declarations: [
     ProductDetailComponent,
     ProductListComponent,
-    // ProductComponent
+    ProductComponent
   ],
   imports: [
     // # Rootはすでにつクァれており使えないためChildにする
