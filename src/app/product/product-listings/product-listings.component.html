@@ -6,9 +6,9 @@
   <br>
   <!-- rawは行。このすぐ後ろにclass="col-sm"のdivを持ってこないと行の中の列の扱いにならないよ！他のdivを入れてはいけない。 -->
   <div class="row">
-    <div *ngFor   ="let product of products" class="col-sm">
+    <div *ngFor   ="let product of products; let productId = index" class="col-sm">
       <!-- 絶対パスから相対パスへ変更 -->
-      <a routerLink="detail">
+      <a [routerLink]="[ productId ]">
         <div class="card">
           <img src="./assets/img/img_placeholder.png" class="card-img-top" alt="...">
           <div class="card-body">
