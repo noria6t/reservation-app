@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 // import { ProductModule } from './product/product.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './common/navbar/navbar.component'
-// import { ProductListComponent } from './product/product-list/product-list.component';
+// import { ProductListComponent } from './product/product-listings/product-listings.component';
 // import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 ;
 
