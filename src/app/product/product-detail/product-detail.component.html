@@ -2,7 +2,8 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+      <!-- angularはappの部分から読み込むので、相対パスのsrcの部分を.に変える -->
+      <img class="first-slide" src="./assets/img/phone-cover.jpg" alt="First slide">
       <div class="container">
         <div class="carousel-caption text-left">
           <h1>{{product.name}}</h1>
@@ -26,6 +27,7 @@
   <!-- Three columns of text below the carousel -->
   <div class="row">
     <div class="col-lg-4">
+      <!-- Convert Your Base64 to ImageでR0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==をデコードできる。グレーの部分が文字の羅列で表現されていたということ。base64のルールに乗っ取って表現されている -->
       <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
       <h2>{{product.heading1}}</h2>
       <p>{{product.headingtext1}}</p>
@@ -40,7 +42,7 @@
     <div class="col-lg-4">
       <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
       <h2>{{product.heading3}}</h2>
-      <p>{{product.headingtext3}}</p>      
+      <p>{{product.headingtext3}}</p>
       <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
     </div><!-- /.col-lg-4 -->
   </div><!-- /.row -->
