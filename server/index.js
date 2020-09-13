@@ -1,15 +1,21 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const config = require('./config/dev')
-const FakeDb = require('./fake-db')
+const SampleDb = require('./sample-db')
+
+// 111のままだとサイドindex。js走らせるとDBのデータがが４つでなく８つまた走らせると１２..と増えてしまう
+// 順番によって処理の順番めっちゃ大事
+// DBの初期化中にダミーデータを入れたら、濃０ーデタまで一緒に消えてしまう。
+// これを避けるためには…
+// AwaitとAsync
 
 mongoose.connect(config.DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(
   () => {
-    const fakeDb = new FakeDb()
-    fakeDb.seeDb()
+    const sampleDb = new SampleDb()
+    sampleDb.initDb()
   }
 );
 

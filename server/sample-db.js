@@ -1,6 +1,6 @@
 const Product = require('./model/product')
 
-class FakeDb {
+class SampleDb {
 
   constructor() {
     this.products = [
@@ -55,6 +55,17 @@ class FakeDb {
     ]
   }
 
+  async initDb() {
+    await this.cleanDb(
+      this.pushProductsToDb()
+    )
+  }
+
+  async cleanDb() {
+    // await　はProduct.deleteManyの処理が終わってから次の関数が処理されるようにするために書かれている。awaitのある関数にはasyncをつけてあげる
+    await Product.deleteMany({})
+  }
+
    pushProductsToDb() {
      this.products.forEach(
        (product) => {
@@ -70,4 +81,4 @@ class FakeDb {
    }
 }
 
-module.exports = FakeDb
+module.exports = SampleDb
