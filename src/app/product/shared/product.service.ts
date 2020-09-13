@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { products } from 'src/app/products';
-// Angularのルールとしてserviceとして使うときは@injectableをserviceの上につけてあげる
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+// Angularのルールとしてserviceとして使うときは@injectableをserviceの上につけてあげる。
 @Injectable()
 export class ProductService {
 
-  // 今はまだproduct.tsの箇条書きデータを取り込んでる状態
-  getProducts() {
-    return products
+  constructor(private http: HttpClient) { }
+
+  // Observable<any> で型をanyにしている。
+  getProducts(): Observable<any> {
+    // return products
+    return this.http.get('http://localhost:3001/api/v1/products')
   }
 
   getProductById(productId: number) {
