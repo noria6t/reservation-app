@@ -3,6 +3,11 @@ const mongoose = require('mongoose')
 const config = require('./config/dev')
 const SampleDb = require('./sample-db')
 
+const productRoutes = require('./routes/products')
+
+
+
+
 // 111のままだとサイドindex。js走らせるとDBのデータがが４つでなく８つまた走らせると１２..と増えてしまう
 // 順番によって処理の順番めっちゃ大事
 // DBの初期化中にダミーデータを入れたら、濃０ーデタまで一緒に消えてしまう。
@@ -21,10 +26,16 @@ mongoose.connect(config.DB_URI, {
 
 const app = express()
 
+// /api/vi/productを叩いた時にproductRoutesを読み込む
+// router.get('', function(req, res){
+//   res.json({'ok': true})
+// })のところで''の時OKを返す
+app.use('/api/v1/products', productRoutes)
+
 // コールバックfunctionのfunction(req, res)の形はexpress側のルールでの書き方。/productsというリクエストが来たらsuccessというのを呼び出した下の方で実行してね。
-app.get('/products', function(req, res){
-  res.json({'success': true})
-})
+// app.get('/products', function(req, res){
+//   res.json({'success': true})
+// })
 
 // herokuとかでサーバーのポートが変わっても参照できるように
 const PORT = process.env.PORT || '3001'
